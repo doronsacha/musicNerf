@@ -1,0 +1,179 @@
+    1  ls
+    2  ./Anaconda3-2024.06-1-Linux-x86_64.sh
+    3  chmod +x Anaconda3-2024.06-1-Linux-x86_64.sh~
+    4  chmod +x Anaconda3-2024.06-1-Linux-x86_64.sh
+    5  ./Anaconda3-2024.06-1-Linux-x86_64.sh
+    6  conda env create -f environment.yml
+    7  cd..
+    8  cd ..
+    9  ls
+   10  cd nerf
+   11  conda env create -f environment.yml
+   12  cd ..
+   13  conda env create -f environment.yml
+   14  conda
+   15  export PATH=~/anaconda3/bin:$PATH
+   16  conda
+   17  cd nerf
+   18  conda env create -f environment.yml
+   19  conda activate nerf 
+   20  conda init
+   21  conda activate nerf 
+   22  bash download_example_weights.sh
+   23  cd nerf
+   24  bash download_example_weights.sh
+   25  python run_nerf.py --config config_fern.txt
+   26  python run_nerf.py --config config_Saloon.txt
+   27  conda env create -f environment.yml
+   28  ls
+   29  vi nerf/run_nerf.py 
+   30  cd nerf/
+   31  ls
+   32  cd imgs/
+   33  ls
+   34  cd ..
+   35  ls
+   36  less config_Saloon.txt 
+   37  ls
+   38  cd data/
+   39  ls
+   40  cd data_perso_from_llff/
+   41  ls
+   42  cd ..
+   43  ls
+   44  cd nerf_llff_data/
+   45  ls
+   46  cd fern/
+   47  ls
+   48  cd ..
+   49  ls
+   50  cd Saloon/
+   51  ls
+   52  less colmap_output.txt 
+   53  cd images
+   54  ls
+   55  cd ,,
+   56  cd ..
+   57  ls images_8
+   58  ls sparse/
+   59  ls sparse/0/
+   60  cd 
+   61  ls
+   62  clear
+   63  ls
+   64  cd nerf/
+   65  ;s
+   66  ls
+   67  clear
+   68  ls
+   69  clear
+   70  cd nerf/
+   71  vi run_nerf.py 
+   72  cd nerf/
+   73  vi run_nerf.py 
+   74  gedit run_nerf.py 
+   75  vi run_nerf.py 
+   76  ls
+   77  vi load_llff.py 
+   78  gedit run_nerf.py 
+   79  gedit run_nerf_helpers.py 
+   80  gedit run_nerf.py 
+   81  pip install numpy tensorflow imageio pydub simpleaudio
+   82  [200~$
+   83  pip install pydub
+   84  gedit run_nerf
+   85  gedit run_nerf.py 
+   86  pip install tensorflow numpy imageio pydub
+   87  ls
+   88  conda activate nerf
+   89  python run_nerf.py --config config_Saloon.txt 
+   90  gedit run_nerf.py 
+   91  python run_nerf.py --config config_Saloon.txt 
+   92  pip install pydub
+   93  python run_nerf.py --config config_Saloon.txt 
+   94  gedit run_nerf.py 
+   95  python run_nerf.py --config config_Saloon.txt 
+   96  gedit run_nerf.py 
+   97  python run_nerf.py --config config_Saloon.txt 
+   98  python run_nerf.py --render_only --render_test --config config_Saloon.txt 
+   99  gedit run_nerf
+  100  gedit run_nerf.py 
+  101  ls
+  102  cd temp_sounds/
+  103  ls
+  104  cd ..
+  105  find . -name "combined.*"
+  106  ls
+  107  gedit run_nerf.py 
+  108  clear
+  109  python run_nerf.py --render_only --render_test --config config_Saloon.txt 
+  110  ls
+  111  cd temp_sounds/
+  112  ls
+  113  cd ..
+  114  cd Saloon/
+  115  ls
+  116  cd ..
+  117  ls
+  118  gedit run_nerf.py 
+  119  python run_nerf.py --render_only --render_test --config config_Saloon.txt 
+  120  ls
+  121  cd nerf/
+  122  ls
+  123  cd temp_sounds/
+  124  ls
+  125  cd ..
+  126  ls
+  127  gedit audio_and_video.py
+  128  watch ls temp_sounds/
+  129  ls temp_sounds/
+  130  ls
+  131  cd Saloon/
+  132  ls
+  133  cd images
+  134  ls
+  135  cd ..
+  136  ls
+  137  cd data/
+  138  ls
+  139  cd ..
+  140  ls logs/Saloon_test/
+  141  ls -ltr logs/Saloon_test/
+  142  ls logs/Saloon_test/tboard_val_imgs
+  143  ls -ltr logs/Saloon_test/
+  144  ls temp_sounds/
+  145  ls
+  146  ls -ltr logs/Saloon_test/
+  147  find . -type f -name "*.mp3"
+  148  gedit run_nerf.py 
+  149  find . -type f -name "*.mp3"
+  150  ls -ltr logs/Saloon_test/
+  151  ls temp_sounds/
+  152  ls
+  153  clear
+  154  ls
+  155  cd logs/
+  156  lks
+  157  ks
+  158  ls
+  159  cd summaries/
+  160  ls
+  161  cd Saloon_test/
+  162  ls
+  163  cd ..
+  164  cd..
+  165  cd ..
+  166  cd Saloon_test/
+  167  ls
+  168  cd ..
+  169  ls temp_sounds/
+  170  ls
+  171  ls temp_sounds/
+  172  ls temp_sounds/sound_0.wav 
+  173  vi temp_sounds/sound_0.wav 
+  174  vi nerf/run_nerf.py 
+  175  python run_nerf.py --render_only --render_test --config config_Saloon.txt 
+  176  cd  nerf/
+  177  python run_nerf.py --render_only --render_test --config config_Saloon.txt 
+  178  conda activate nerf
+  179  history | less
