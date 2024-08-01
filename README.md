@@ -112,10 +112,6 @@ In `run_nerf.py` and all other code, we use the same pose coordinate system as i
 
 Poses are stored as 3x4 numpy arrays that represent camera-to-world transformation matrices. The other data you will need is simple pinhole camera intrinsics (`hwf = [height, width, focal length]`) and near/far scene bounds. Take a look at [our data loading code](https://github.com/bmild/nerf/blob/master/run_nerf.py#L406) to see more.
 
-## Adding Sound to NeRF Renders
-
-This repository also includes functionality to add sound to your NeRF renders based on the viewer's position.
-
 ## Setup for Audio and Video Processing
 
 To enable audio and video processing, you need to install the following additional packages:
@@ -126,8 +122,16 @@ conda install -c conda-forge ffmpeg
 
 ### Steps to Generate Sound:
 
-1. Ensure you have `render_poses.pkl`, `poses.pkl`, and `image_notes.pkl` files in your working directory.
+1. Ensure you have render_poses.pkl, poses.pkl, and image_notes.pkl files in your working directory. These files are automatically created when you run NeRF with the --render_only option
+   ```
+   python run_nerf.py --render_only ...
+   ```
 2. Run the following command to generate the audio file:
+   ```
+   python create_audio.py
+   ```
+3. The generated audio file will be saved as combined_sounds.mp3.
+
 ```
 python create_audio.py
 ```
@@ -136,13 +140,12 @@ python create_audio.py
 ### Combining Audio and Video:
 
 1. Ensure you have the video file from your NeRF render and the generated audio file.
-2. Run the following command to combine the audio with the video:
+2. Edit the audio_and_video.py script to provide the correct paths for the video and audio files. The audio file is located in the nerf directory, and the video file is in the nerf/logs directory.
+3. Run the following command to combine the audio with the video:
 ```
 python audio_and_video.py
 ```
-3. The combined video with audio will be saved as `video_with_audio.mp4`.
-
-
+4. The combined video with audio will be saved as `video_with_audio.mp4`.
 
 ## Citation
 
