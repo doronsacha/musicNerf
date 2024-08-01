@@ -77,24 +77,6 @@ def get_embedder(multires, i=0):
 
 # Model architecture
 
-def calculate_weights(viewer_pos, image_positions):
-    distances = np.linalg.norm(image_positions - viewer_pos, axis=1)
-    epsilon = 1e-6  # Petit valeur pour éviter la division par zéro
-    weights = 1 / (distances + epsilon)
-    normalized_weights = weights / np.sum(weights)
-    return normalized_weights
-
-def weighted_average_frequency(viewer_pos, image_positions, image_notes):
-    weights = calculate_weights(viewer_pos, image_positions)
-    note_frequencies = {
-        'A': 440.00, 'A#': 466.16, 'B': 493.88, 'C': 261.63, 'C#': 277.18,
-        'D': 293.66, 'D#': 311.13, 'E': 329.63, 'F': 349.23, 'F#': 369.99,
-        'G': 392.00, 'G#': 415.30
-    }
-    frequencies = np.array([note_frequencies[image_notes[i]] for i in range(len(image_positions))])
-    weighted_frequency = np.sum(frequencies * weights)
-    return weighted_frequency
-
 def init_nerf_model(D=8, W=256, input_ch=3, input_ch_views=3, output_ch=4, skips=[4], use_viewdirs=False):
 
     relu = tf.keras.layers.ReLU()

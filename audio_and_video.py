@@ -17,10 +17,9 @@ def add_audio_to_video(video_path, audio_path, output_path):
     
     video_with_audio.write_videofile(output_path, codec='libx264', audio_codec='aac')
 
-video_path = ""
-audio_path = ""
+video_path = "/home/user_201/nerf/logs/Saloon_test/renderonly_path_330001/video.mp4"
+audio_path = "/home/user_201/nerf/combined_sounds.mp3"
 output_path = "/home/user_201/nerf/video_with_audio.mp4"
 
-# Appeler la fonction pour ajouter l'audio à la vidéo
 add_audio_to_video(video_path, audio_path, output_path)
 

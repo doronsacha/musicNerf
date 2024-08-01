@@ -12,10 +12,6 @@ from run_nerf_helpers import *
 from load_llff import load_llff_data
 from load_deepvoxels import load_dv_data
 from load_blender import load_blender_data
-from run_nerf_helpers import calculate_weights, weighted_average_frequency
-import pydub
-from pydub import AudioSegment
-from pydub.generators import Sine
 
 tf.compat.v1.enable_eager_execution()
 
@@ -579,7 +575,7 @@ def render_view(viewer_pos, image_positions, image_notes):
     print(f'Average Frequency at viewer position {viewer_pos}: {average_frequency}')
     
     sine_wave = Sine(average_frequency)
-    sound = sine_wave.to_audio_segment(duration=990)
+    sound = sine_wave.to_audio_segment(duration=33.3)
     sound.export("temp_sound.wav", format="wav")
     pydub.playback.play(sound)
    
@@ -666,7 +662,7 @@ def train():
         os.makedirs('temp_sounds')
    
     if args.render_test:
-        render_poses = np.array(poses[i_test])
+        render_poses = np.array(poses)
 
     # Create log dir and copy the config file
     basedir = args.basedir
@@ -696,6 +692,18 @@ def train():
     # Short circuit if only rendering out from trained model
     if args.render_only:
         print('RENDER ONLY')
+        import pickle
+
+        with open('render_poses.pkl', 'wb') as f:
+            pickle.dump(render_poses, f)
+
+        with open('poses.pkl', 'wb') as f:
+            pickle.dump(poses, f)
+
+        with open('image_notes.pkl', 'wb') as f:
+            pickle.dump(image_notes, f)
+
+
         if args.render_test:
             # render_test switches to test poses
             images = images[i_test]
@@ -713,33 +721,6 @@ def train():
         print('Done rendering', testsavedir)
         imageio.mimwrite(os.path.join(testsavedir, 'video.mp4'),
                          to8b(rgbs), fps=30, quality=8)
-        print('Generating sounds...')
-        sound_segments = []
-        for i, pose in enumerate(render_poses):
-            print(f'Generating sound for frame {i}')
-            viewer_pos = pose[:3, -1]
-            image_positions = poses[:, :3, -1]
-            average_frequency = weighted_average_frequency(viewer_pos, image_positions, image_notes)
-            print(f'Generating sound for frame {i}, Viewer Position: {viewer_pos}, Average Frequency: {average_frequency}')
-            sine_wave = Sine(average_frequency)
-            sound = sine_wave.to_audio_segment(duration=990)  
-            sound_file = f"temp_sounds/sound_{i}.wav"
-            sound.export(sound_file, format="wav")
-            print(f'Sound file saved: {sound_file}')
-            sound_segments.append(sound)
-
-        print(f"Number of sound segments: {len(sound_segments)}")
-
-        print('Combining sound segments...')
-        combined_sounds = sum(sound_segments)
-        
-        combined_duration = combined_sounds.duration_seconds
-        print(f"Combined sound duration: {combined_duration} seconds")
-        
-        output_mp3 = os.path.join(testsavedir, 'combined_sounds.mp3')
-        combined_sounds.export(output_mp3, format='mp3')
-        print(f'Sound generation complete. Saved to {output_mp3}')
-        return
         
 
     # Create optimizer
