@@ -102,6 +102,10 @@ pip install trimesh pyrender PyMCubes
 
 ## Generating poses for your own scenes
 
+### TLDR;
+First take some pictures of a scene (~25) then put them into COLMAP.Use the imgs2poses.py script from the LLFF code. Create a folder in the nerf folder and pass the
+images and the colmap_output into it. Then, create a new file in nerf/logs and put inside the config (this file must be configured, see an example in Saloon_test). You can now run your own nerf.
+
 ### Don't have poses?
 
 We recommend using the `imgs2poses.py` script from the [LLFF code](https://github.com/fyusion/llff). Then you can pass the base scene directory into our code using `--datadir <myscene>` along with `-dataset_type llff`. You can take a look at the `config_fern.txt` config file for example settings to use for a forward facing scene. For a spherically captured 360 scene, we recomment adding the `--no_ndc --spherify --lindisp` flags.
@@ -111,6 +115,8 @@ We recommend using the `imgs2poses.py` script from the [LLFF code](https://githu
 In `run_nerf.py` and all other code, we use the same pose coordinate system as in OpenGL: the local camera coordinate system of an image is defined in a way that the X axis points to the right, the Y axis upwards, and the Z axis backwards as seen from the image.
 
 Poses are stored as 3x4 numpy arrays that represent camera-to-world transformation matrices. The other data you will need is simple pinhole camera intrinsics (`hwf = [height, width, focal length]`) and near/far scene bounds. Take a look at [our data loading code](https://github.com/bmild/nerf/blob/master/run_nerf.py#L406) to see more.
+
+
 
 ## Setup for Audio and Video Processing
 
@@ -122,7 +128,7 @@ conda install -c conda-forge ffmpeg
 
 ### Steps to Generate Sound:
 
-1. Ensure you have render_poses.pkl, poses.pkl, and image_notes.pkl files in your working directory. These files are automatically created when you run NeRF with the --render_only option
+1. Ensure you have render_poses.pkl, poses.pkl, and image_notes.pkl files in your working directory. These files are automatically created when you run NeRF with the --render_only option(you can just re-run the command bellow until the three files are created with no need to wait).
    ```
    python run_nerf.py --render_only ...
    ```
