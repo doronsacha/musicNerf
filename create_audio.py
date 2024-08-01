@@ -15,9 +15,9 @@ with open('image_notes.pkl', 'rb') as f:
     image_notes = pickle.load(f)
 
 
-def weighted_average_frequency(viewer_pos, image_positions, image_notes, epsilon=1e-6, influence_factor=1):
+def weighted_average_frequency(viewer_pos, image_positions, image_notes, epsilon=1e-6, influence_factor=10):
     distances = np.linalg.norm(image_positions - viewer_pos, axis=1)
-    weights = 1 / (np.sqrt(distances) + (epsilon))
+    weights = 1 / (np.sqrt((distances) + (epsilon)))
 
     leftmost_idx = np.argmin(image_positions[:, 0])
     rightmost_idx = np.argmax(image_positions[:, 0])
@@ -49,7 +49,7 @@ for i, pose in enumerate(render_poses):
     print(f'Average frequency {average_frequency} for frame {i}')
     sine_wave = Sine(average_frequency)
 
-    sound = sine_wave.to_audio_segment(duration=180)
+    sound = sine_wave.to_audio_segment(duration=131)
     sound_segments.append(sound)
 
 print(f"Number of sound segments: {len(sound_segments)}")
@@ -61,7 +61,6 @@ for sound in sound_segments[1:]:
     combined_sounds = combined_sounds.append(sound, crossfade=50)
 for sound in sound_segments[1:]:
     combined_sounds = combined_sounds.append(sound, crossfade=50)
-
 combined_duration = combined_sounds.duration_seconds
 print(f"Combined sound duration: {combined_duration} seconds")
 
